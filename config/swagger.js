@@ -8,7 +8,12 @@ const options = {
       version: "1.0.0",
       description: "Event management REST API",
     },
-    
+    servers: [
+      {
+        url: "http://localhost:3000",
+        description: "Local server",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {

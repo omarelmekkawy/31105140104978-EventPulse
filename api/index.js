@@ -10,5 +10,6 @@ module.exports = async (req, res) => {
     await connectDB();
     dbConnected = true;
   }
-}
+
   return app(req, res);
+};
