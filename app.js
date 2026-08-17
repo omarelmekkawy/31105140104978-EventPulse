@@ -29,24 +29,7 @@ app.get("/health", (req, res) => {
     database: mongoose.connection.readyState === 1 ? "connected" : "disconnected",
   });
 });
-
-// CDN Assets to fix the Vercel blank white screen issue
-const CSS_URL = "https://cloudflare.com";
-const JS_URL = [
-  "https://cloudflare.com",
-  "https://cloudflare.com"
-];
-
-// Serve Swagger docs with custom CDN asset links
-app.use(
-  "/api-docs", 
-  swaggerUi.serve, 
-  swaggerUi.setup(swaggerSpec, {
-    customCssUrl: CSS_URL,
-    customJs: JS_URL
-  })
-);
-
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorHandler);
 
 module.exports = app;
